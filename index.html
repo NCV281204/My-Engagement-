@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>ពិធីភ្ជាប់ពាក្យ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Battambang:wght@400;700&family=Moul&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="locked">
+
+<div class="gate" id="gate" role="dialog" aria-modal="true" aria-label="Open invitation">
+  <div class="gate-in">
+    <h1 class="red">ពិធីភ្ជាប់ពាក្យ</h1>
+    <p class="red lead">សូមគោរពអញ្ជើញ</p>
+    <div class="plaque" id="gateGuest"></div>
+    <button class="gold" id="open" type="button">បើកសំបុត្រអញ្ជើញ</button>
+    <small>Tap to open</small>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <section class="cover">
+    <h1 class="red">ពិធីភ្ជាប់ពាក្យ</h1>
+    <p class="red names"><span id="groom"></span> និង <span id="bride"></span></p>
+    <svg class="rings" viewBox="0 0 220 150" aria-hidden="true">
+      <defs>
+        <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#f7dca0"/><stop offset=".5" stop-color="#d9a35e"/><stop offset="1" stop-color="#f3cf8a"/>
+        </linearGradient>
+        <clipPath id="rc"><circle cx="82" cy="82" r="50"/><circle cx="132" cy="62" r="44"/></clipPath>
+      </defs>
+      <rect x="32" y="18" width="144" height="114" fill="#fff" fill-opacity=".4" clip-path="url(#rc)"/>
+      <image href="images/background.jpg" x="32" y="18" width="144" height="114" preserveAspectRatio="xMidYMid slice" clip-path="url(#rc)"/>
+      <circle cx="82" cy="82" r="50" fill="none" stroke="url(#g)" stroke-width="9"/>
+      <circle cx="132" cy="62" r="44" fill="none" stroke="url(#g)" stroke-width="9"/>
+    </svg>
+    <p class="red lead">សូមគោរពអញ្ជើញ</p>
+    <div class="plaque" id="guest"></div>
+    <p class="red dateline" id="dateCover"></p>
+    <a class="scroll" href="#details">សូមអូសចុះក្រោម<small>Scroll down</small></a>
+  </section>
+
+  <section class="page" id="details">
+    <div class="couple">
+      <div><small>កូនប្រុស</small><strong id="groom2"></strong></div>
+      <span class="heart" aria-hidden="true">♡</span>
+      <div><small>កូនស្រី</small><strong id="bride2"></strong></div>
+    </div>
+    <h2>យើងខ្ញុំមានកិត្តិយសសូមគោរពអញ្ជើញ</h2>
+    <p class="body">សម្តេច ទ្រង់ ឯកឧត្តម លោកជំទាវ លោកអ្នកឧកញ៉ា អ្នកឧកញ៉ា ឧកញ៉ា លោក លោកស្រី អ្នកនាង កញ្ញា ព្រមទាំងប្រិយមិត្តអញ្ជើញចូលរួមជាអធិបតី និងជាភ្ញៀវកិត្តិយស ដើម្បីប្រសិទ្ធពរជ័យសិរីសួស្តី ជ័យមង្គល ក្នុងពិធីភ្ជាប់ពាក្យ របស់យើងខ្ញុំទាំងពីរ។</p>
+    <div class="divider"></div>
+    <h3>ចំនួនថ្ងៃរាប់ថយក្រោយ</h3>
+    <p class="date" id="dateMain"></p>
+    <div id="count" class="count" aria-live="polite"></div>
+    <button class="gold" id="cal" type="button">កត់ចូលក្នុងប្រតិទិនអ្នក</button>
+  </section>
+
+  <section class="page">
+    <h2 class="big">ទីតាំងកម្មវិធី</h2>
+    <div class="map">
+      <iframe id="mapFrame" title="ទីតាំងកម្មវិធី (Google Map)" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      <p id="mapNote" hidden>Map link not recognised. In config.js, paste the long Google Maps link (not a short maps.app.goo.gl link).</p>
+      <p id="venueBox" hidden><strong id="venue"></strong><br><span id="address"></span></p>
+    </div>
+    <a class="gold" id="mapLink" href="#" target="_blank" rel="noopener">មើលក្នុង Google Map</a>
+  </section>
+
+  <section class="page">
+    <h2 class="big">កម្រងរូបភាព</h2>
+    <div class="gallery">
+      <figure data-hint="images/photo1.jpg"><img src="images/photo1.jpg" alt="" loading="lazy" onerror="this.remove()"></figure>
+      <figure data-hint="images/photo2.jpg"><img src="images/photo2.jpg" alt="" loading="lazy" onerror="this.remove()"></figure>
+      <figure data-hint="images/photo3.jpg"><img src="images/photo3.jpg" alt="" loading="lazy" onerror="this.remove()"></figure>
+      <figure data-hint="images/photo4.jpg"><img src="images/photo4.jpg" alt="" loading="lazy" onerror="this.remove()"></figure>
+    </div>
+  </section>
+
+  <section class="page">
+    <h2>សូមអរគុណ និង សូមអភ័យទោស</h2>
+    <p class="body">យើងខ្ញុំទាំងពីរ សូមថ្លែងអំណរគុណយ៉ាងជ្រាលជ្រៅ ចំពោះវត្តមានដ៏ឧត្តុង្គឧត្តមរបស់ភ្ញៀវកិត្តិយសទាំងអស់ដែលបានអញ្ជើញចូលរួមក្នុងពិធីភ្ជាប់ពាក្យរបស់យើងខ្ញុំ។ យើងខ្ញុំសូមអភ័យទោស ប្រសិនបើមិនបានជូនលិខិតអញ្ជើញដោយផ្ទាល់។</p>
+    <h3 class="khqr">ចងដៃតាមរយៈ KHQR</h3>
+    <div class="qr">
+      <figure data-hint="images/khqr.png"><img src="images/khqr.png" alt="KHQR" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='images/khqr-usd.png'}else{this.remove()}"></figure>
+    </div>
+    <div class="divider"></div>
+  </section>
+
+</main>
+
+<audio id="bgm" loop preload="auto">
+  <source src="music/music.mp3" type="audio/mpeg">
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+<button id="musicBtn" class="music" type="button" aria-label="Play or pause music" aria-pressed="false">
+  <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M9 3v11.3A3.5 3.5 0 1 0 11 17V7h6V3H9z"/></svg>
+  <span class="slash"></span>
+</button>
+<script src="config.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

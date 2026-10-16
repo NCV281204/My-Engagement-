@@ -1,0 +1,100 @@
+:root{--ivory:#fcf5e1;--gold:#b8893a;--gold-d:#8f6a24;--ink:#6b4a17;--red:#e60012;--line:#ecd9a4}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:#efe3c4;color:var(--ink);font:400 1rem/1.9 "Battambang","Noto Sans Khmer",sans-serif}
+.wrap{max-width:480px;margin:0 auto;background:var(--ivory) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='none' stroke='%23ecd9a4' stroke-width='1.2'%3E%3Cpath d='M40 6c8 10 8 20 0 34-8-14-8-24 0-34zM40 74c8-10 8-20 0-34-8 14-8 24 0 34zM6 40c10-8 20-8 34 0-14 8-24 8-34 0zM74 40c-10 8-20 8-34 0 14-8 24-8 34 0z'/%3E%3Ccircle cx='40' cy='40' r='4'/%3E%3C/g%3E%3C/svg%3E");box-shadow:0 0 40px rgba(90,60,10,.18)}
+h1,h2,h3{font-family:"Moul",serif;font-weight:400;margin:0}
+.red{color:var(--red);text-shadow:0 2px 0 #fff,0 4px 8px rgba(0,0,0,.22)}
+
+/* Cover */
+.cover{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6rem;padding:2.5rem 1.25rem;text-align:center;background:radial-gradient(circle at 70% 25%,#fff 0,transparent 60%)}
+.cover h1{font-size:clamp(1.8rem,8vw,2.4rem);line-height:1.6}
+.names{font:400 1.25rem/1.6 "Moul",serif;margin:0}
+.rings{width:min(90%,380px);margin:.5rem 0;filter:drop-shadow(0 6px 10px rgba(120,80,20,.3));animation:ringin 1.3s ease-out both}
+@keyframes ringin{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:none}}
+.lead{font:700 1.2rem "Battambang",serif;margin:0}
+.plaque{min-width:80%;padding:.9rem 1.5rem;font-weight:700;color:var(--ink);background:linear-gradient(180deg,#fff0a8,#f0c75e 50%,#d9a338);border:3px solid #f6d77a;border-radius:18px;box-shadow:0 0 0 2px #c9962a,0 6px 14px rgba(120,80,20,.3)}
+.dateline{font-weight:700;margin:.2rem 0;font-size:.95rem}
+.scroll{margin-top:1rem;padding:.7rem 2rem;color:#fff;text-decoration:none;background:rgba(120,120,120,.55);border-radius:99px;display:flex;flex-direction:column;line-height:1.4}
+.scroll small{font-size:.75rem}
+
+/* Pages */
+.page{padding:3rem 1.5rem;text-align:center}
+.page h2{font-size:1.1rem;line-height:1.9;color:var(--gold);margin-bottom:1rem}
+.page h2.big{font-size:1.5rem;margin-bottom:1.5rem}
+.page h3{font-size:1.05rem;color:var(--gold-d);margin:1.5rem 0 .5rem}
+.body{margin:0 auto;color:var(--gold-d);text-align:justify;text-align-last:center}
+.date{font-weight:700;color:var(--gold-d);margin:.3rem 0 1rem}
+.couple{display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem}
+.couple div{flex:1;display:flex;flex-direction:column}
+.couple small{color:var(--gold)}
+.couple strong{font:400 1.05rem/1.6 "Moul",serif;color:var(--gold-d)}
+.heart{font-size:2rem;color:#f0b92a;padding:0 .5rem}
+.divider{height:14px;margin:1.75rem auto;max-width:260px;background:linear-gradient(90deg,transparent,#f0c75e,transparent) center/100% 2px no-repeat;position:relative}
+.divider::after{content:"✦";position:absolute;inset:0;margin:auto;width:2em;height:100%;line-height:12px;background:var(--ivory);color:#f0b92a}
+
+/* Countdown */
+.count{display:flex;justify-content:center;gap:.6rem;margin:1rem 0 1.75rem;font-size:2.2rem;font-weight:700;color:#e0a81c}
+.count div{min-width:3.6rem;display:flex;flex-direction:column;line-height:1.3}
+.count small{font-size:.75rem;font-weight:400;color:var(--gold-d)}
+.count.done{font:700 2.1rem "Noto Sans",system-ui,sans-serif}
+
+/* Gold buttons */
+.gold{display:inline-block;padding:.75rem 2rem;border:2px solid #f6d77a;border-radius:14px;cursor:pointer;color:#fff;font:700 1rem "Battambang",serif;text-decoration:none;text-shadow:0 1px 2px rgba(120,80,0,.5);background:linear-gradient(180deg,#fbe08a,#e4b03c 55%,#c9962a);box-shadow:0 0 0 2px #c9962a,0 5px 12px rgba(120,80,20,.3)}
+.gold:hover{filter:brightness(1.06)}
+:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+
+/* Map, gallery, QR */
+.map{border:2px solid #d9b46a;border-radius:20px;overflow:hidden;margin-bottom:2rem;background:#fff9e8}
+.map img{display:block;width:100%}
+.map p{margin:0;padding:1.25rem;color:var(--gold-d)}
+.gallery{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+figure{margin:0;position:relative;overflow:hidden;border-radius:18px;background:linear-gradient(160deg,#f3e2b0,#e0c27a);display:grid;place-items:center}
+.gallery figure{aspect-ratio:3/4}
+figure::after{content:attr(data-hint);position:absolute;font:.75rem "Noto Sans",sans-serif;color:#8f6a24;z-index:0}
+figure img{position:relative;z-index:1;width:100%;height:100%;object-fit:cover;display:block}
+.qr{max-width:240px;margin:1.25rem auto 0}
+.qr figure{aspect-ratio:1;background:#fff}
+.qr img{object-fit:contain;padding:.5rem}
+
+@media (prefers-reduced-motion:reduce){.rings{animation:none}html{scroll-behavior:auto}}
+
+/* Music button */
+.music{position:fixed;bottom:1rem;right:max(1rem,calc(50% - 240px + 1rem));z-index:10;width:46px;height:46px;border-radius:50%;border:2px solid #f6d77a;color:#fff;cursor:pointer;display:grid;place-items:center;background:linear-gradient(180deg,#fbe08a,#e4b03c 55%,#c9962a);box-shadow:0 0 0 2px #c9962a,0 4px 10px rgba(120,80,20,.35)}
+.music[hidden]{display:none}
+.music svg{animation:spin 4s linear infinite}
+.music .slash{position:absolute;width:30px;height:3px;background:#fff;border-radius:2px;transform:rotate(-45deg);box-shadow:0 0 0 1px #8f6a24;display:none}
+.music[aria-pressed="false"] svg{animation:none}
+.music[aria-pressed="false"] .slash{display:block}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.music svg{animation:none}}
+
+/* Open-invitation screen (a tap here lets the music start) */
+body.locked{overflow:hidden}
+.gate{position:fixed;inset:0;z-index:20;display:grid;place-items:center;padding:1.5rem;text-align:center;background:radial-gradient(circle at 70% 25%,#fff 0,transparent 60%),var(--ivory);transition:opacity .6s ease,visibility .6s}
+.gate.out{opacity:0;visibility:hidden}
+.gate-in{width:min(100%,420px);display:flex;flex-direction:column;align-items:center;gap:1rem}
+.gate h1{font-size:clamp(1.8rem,8vw,2.4rem);line-height:1.6}
+.gate .lead{margin:0}
+.gate small{color:var(--gold-d)}
+@media (prefers-reduced-motion:reduce){.gate{transition:none}}
+
+/* Your photo as the background of the whole invitation: save it as images/background.jpg.
+   --veil sets how strongly the cream tint covers the photo (0 = none, 1 = hides it).
+   The photo stays still while the pages scroll over it. */
+:root{--veil:.4;--panel:.62;--gate-veil:.2;--b1-pos:center}
+.wrap{isolation:isolate}
+.wrap::before{content:"";position:fixed;z-index:-1;top:0;bottom:0;left:50%;width:min(100%,480px);transform:translateX(-50%);
+  background:linear-gradient(rgba(252,245,225,var(--veil)),rgba(252,245,225,var(--veil))),url("images/background.jpg") center/cover no-repeat}
+.cover{background:none}
+.page{background:rgba(252,245,225,var(--panel))}
+.page h2,.page h3,.couple strong{color:#8f6a24}
+.body,.date,.count small,.map p,.couple small{color:var(--ink)}
+.gate{background:
+  radial-gradient(ellipse at center,rgba(252,245,225,.72) 0,rgba(252,245,225,0) 70%),
+  linear-gradient(rgba(252,245,225,var(--gate-veil)),rgba(252,245,225,calc(var(--gate-veil) + .1))),
+  url("images/B1.JPG") var(--b1-pos) / cover no-repeat,
+  url("images/background.jpg") center / cover no-repeat,
+  radial-gradient(circle at 70% 25%,#fff 0,transparent 60%),var(--ivory)}
+
+.map iframe{display:block;width:100%;height:300px;border:0}
