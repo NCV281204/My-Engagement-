@@ -47,17 +47,6 @@ function tick() {
 }
 tick(); setInterval(tick, 1000);
 
-// Add to calendar (.ics)
-$("cal").addEventListener("click", () => {
-  const f = (t) => t.toISOString().replace(/[-:]|\.\d{3}/g, "");
-  const ics = ["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//Invitation//KM","BEGIN:VEVENT",
-    `UID:${f(start)}@invitation`,`DTSTAMP:${f(new Date())}`,`DTSTART:${f(start)}`,`DTEND:${f(end)}`,
-    `SUMMARY:ពិធីភ្ជាប់ពាក្យ ${CONFIG.groom} និង ${CONFIG.bride}`,
-    `LOCATION:${[CONFIG.venue, CONFIG.address].filter(Boolean).join(" ") || CONFIG.mapLink}`,"END:VEVENT","END:VCALENDAR"].join("\r\n");
-  const a = document.createElement("a");
-  a.href = URL.createObjectURL(new Blob([ics], { type: "text/calendar" }));
-  a.download = "engagement.ics"; a.click(); URL.revokeObjectURL(a.href);
-});
 // ===== Music =====
 // Plays music/music.mp3 (or music.mp3 next to index.html). If neither file is found,
 // a built-in music-box tune plays instead, so the invitation is never silent.
@@ -103,7 +92,7 @@ function scheduleTune(t0) {
 }
 function startSynth() {
   if (!unlockCtx()) return;
-  if (mode !== "synth") console.warn("music/music.mp3 was not found, so the built-in tune is playing.");
+  if (mode !== "synth") console.warn("music/music.mp3");
   mode = "synth"; ui(true);
   if (!nextStart) nextStart = ctx.currentTime + 0.1;
   const feed = () => { while (ctx.state === "running" && ctx.currentTime > nextStart - 4) nextStart += scheduleTune(nextStart); };
