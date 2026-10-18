@@ -104,7 +104,7 @@ figure img{position:relative;z-index:1;width:100%;height:100%;object-fit:cover;d
     url("images/frame2.jpg") center/cover no-repeat,
     linear-gradient(180deg,#cfe6fa,#9fd06a)}
   .door.l .bg{left:0}.door.r .bg{right:0}
-  .door.l::after{content:"";position:absolute;top:0;right:0;bottom:0;width:2px;background:linear-gradient(#f6d77a,#c9962a,#f6d77a)}
+  .door.l::after{content:"";position:absolute;top:0;right:0;bottom:0;width:2px;}
   .gate.open .l{transform:translateX(-101%)}
   .gate.open .r{transform:translateX(101%)}
 
