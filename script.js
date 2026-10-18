@@ -33,11 +33,13 @@ document.title = `ពិធីភ្ជាប់ពាក្យ ${CONFIG.groom} 
 
 // Countdown
 const start = new Date(`${CONFIG.date}T${CONFIG.time}:00+07:00`);
-const end = new Date(start.getTime() + CONFIG.hours * 3600000);
 function tick() {
   const ms = start - Date.now();
   const box = $("count");
-  if (ms <= 0) { box.className = "count done"; box.textContent = "Congratulations!"; return; }
+  if (ms <= 0) {                       // the time has come: hide the countdown completely
+    box.style.display = "none"; $("countTitle").style.display = "none";
+    clearInterval(timer); return;
+  }
   const p = [[864e5, "ថ្ងៃ"], [36e5, "ម៉ោង"], [6e4, "នាទី"], [1e3, "វិនាទី"]];
   let rest = ms;
   box.innerHTML = p.map(([u, label], i) => {
@@ -45,7 +47,8 @@ function tick() {
     return `<div>${kh(String(v).padStart(2, "0"))}<small>${label}</small></div>`;
   }).join("");
 }
-tick(); setInterval(tick, 1000);
+const timer = setInterval(tick, 1000);
+tick();
 
 // ===== Music =====
 // Plays music/music.mp3 (or music.mp3 next to index.html). If neither file is found,
@@ -92,7 +95,7 @@ function scheduleTune(t0) {
 }
 function startSynth() {
   if (!unlockCtx()) return;
-  if (mode !== "synth") console.warn("music/music.mp3");
+  if (mode !== "synth") console.warn("music/music.mp3 was not found, so the built-in tune is playing.");
   mode = "synth"; ui(true);
   if (!nextStart) nextStart = ctx.currentTime + 0.1;
   const feed = () => { while (ctx.state === "running" && ctx.currentTime > nextStart - 4) nextStart += scheduleTune(nextStart); };
@@ -123,9 +126,10 @@ $("open").addEventListener("click", () => {
   userPaused = false;
   play();
   const g = $("gate");
-  g.classList.add("out");
+  g.classList.add("open");                    // the two doors slide apart
   document.body.classList.remove("locked");
+  document.body.classList.add("revealed");    // starts the cover animation
   window.scrollTo(0, 0);
-  setTimeout(() => g.remove(), 700);
+  setTimeout(() => g.remove(), 1500);
 });
 $("open").focus();
