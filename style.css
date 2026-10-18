@@ -12,7 +12,7 @@ h1,h2,h3{margin:0}
 .wrap::before{content:"";position:fixed;z-index:-1;top:0;bottom:0;left:50%;width:min(100%,480px);transform:translateX(-50%);
   background:url("images/b1.jpg") center/cover no-repeat,var(--ivory)}
 .blue{text-shadow:0 0 3px #fff,0 0 3px #fff,0 0 10px #fff,0 3px 6px rgba(90,55,5,.3)}
-.blue{margin-top:4.5cm;}
+.blue{margin-top:2.5cm;}
 /* Cover */
 .cover{position:relative;overflow:hidden;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;padding:2.5rem 1.25rem 7.5rem;text-align:center;background:
   linear-gradient(180deg,rgba(255,255,255,.5) 0,rgba(255,255,255,.1) 40%,rgba(255,255,255,0) 100%),
