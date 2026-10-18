@@ -10,9 +10,9 @@ h1,h2,h3{margin:0}
 .wrap{isolation:isolate}
 /* The frame stays in place behind every page while they scroll over it: images/frame.jpg */
 .wrap::before{content:"";position:fixed;z-index:-1;top:0;bottom:0;left:50%;width:min(100%,480px);transform:translateX(-50%);
-  background:url("images/background.jpg") center/cover no-repeat,var(--ivory)}
+  background:url("images/b1.jpg") center/cover no-repeat,var(--ivory)}
 .blue{text-shadow:0 0 3px #fff,0 0 3px #fff,0 0 10px #fff,0 3px 6px rgba(90,55,5,.3)}
-
+.blue{margin: bottom 1.5cm;}
 /* Cover */
 .cover{position:relative;overflow:hidden;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;padding:2.5rem 1.25rem 7.5rem;text-align:center;background:
   linear-gradient(180deg,rgba(255,255,255,.5) 0,rgba(255,255,255,.1) 40%,rgba(255,255,255,0) 100%),
@@ -20,21 +20,21 @@ h1,h2,h3{margin:0}
   url("images/frame.jpg") center/cover no-repeat,
   linear-gradient(180deg,#cfe6fa,#9fd06a)}
 .cover h1{font-size:clamp(1.8rem,9vw,2.5rem);line-height:1.6}
-.names{font-size:clamp(.95rem,4.4vw,1.25rem);line-height:1.7;margin:0}
+.names{font-size:clamp(.95rem,4.4vw,1.25rem);line-height:0.6cm;margin:0}
 .orn{width:min(86%,320px);height:auto}
 .ringbox{position:relative;width:min(90%,400px);margin:.25rem 0}
 .ringbox img{display:block;width:100%;height:auto;filter:drop-shadow(0 10px 12px rgba(60,40,0,.45))}
 .gate .ringbox{width:min(72%,290px)}
 .sp{position:absolute;width:24px;height:24px;background:#fff8dc;clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%);opacity:0}
 .s1{left:63%;top:8%}.s2{left:22%;top:46%}.s3{left:79%;top:58%}
-.lead{font-size:1rem;margin:.4rem 0 0}
+.lead{font-size:1rem;margin:6.4cm 0 0;line-height:1.9}
 .lead::before,.lead::after{content:"❖";color:#d9a335;margin:0 .6rem;font-size:.9em;text-shadow:none}
 .plaque{position:relative;min-width:84%;padding:.8rem 2.4rem;font-size:1.05rem;line-height:1.8;color:var(--on-gold);background:linear-gradient(180deg,#fff2b3,#f2c84f 50%,#d9a338);border:3px solid #f6d77a;border-radius:14px;box-shadow:0 0 0 2px #c9962a,inset 0 0 0 3px rgba(255,255,255,.35),0 8px 16px rgba(60,40,0,.3)}
 .plaque::before,.plaque::after{content:"❖";position:absolute;top:50%;transform:translateY(-50%);color:#8f6a24;font-size:1.1rem}
 .plaque::before{left:.7rem}.plaque::after{right:.7rem}
 .dateline{margin:.2rem 0;font-size:.78rem;line-height:1.9}
 .dateline::before,.dateline::after{content:"❖";color:#d9a335;margin:0 .5rem;font-size:.8em;text-shadow:none}
-.scroll{position:relative;z-index:1;margin-top:.6rem;padding:.5rem 2.2rem .8rem;color:var(--on-gold);text-decoration:none;background:linear-gradient(180deg,#fbe08a,#e4b03c 55%,#c9962a);border:3px solid #f6d77a;border-radius:16px;display:flex;flex-direction:column;align-items:center;line-height:1.7;box-shadow:0 0 0 2px #c9962a,0 6px 12px rgba(60,40,0,.3)}
+.scroll{position:relative;z-index:1;margin-top:.9cm;padding:.5rem 2.2rem .8rem;color:var(--on-gold);text-decoration:none;background:linear-gradient(180deg,#fbe08a,#e4b03c 55%,#c9962a);border:3px solid #f6d77a;border-radius:16px;display:flex;flex-direction:column;align-items:center;line-height:1.7;box-shadow:0 0 0 2px #c9962a,0 6px 12px rgba(60,40,0,.3)}
 .scroll small{font-size:.65rem}
 .scroll::after{content:"";width:9px;height:9px;border:solid var(--on-gold);border-width:0 2px 2px 0;transform:rotate(45deg);margin-top:2px}
 /* Pages */
@@ -96,12 +96,12 @@ figure img{position:relative;z-index:1;width:100%;height:100%;object-fit:cover;d
   .gate small{font-size:.7rem}
   .gleaf,.gfloral{z-index:1;transition:opacity .4s ease}
   .gate.open .gleaf,.gate.open .gfloral{opacity:0}
-  .door{position:absolute;top:0;bottom:0;width:50%;overflow:hidden;transition:transform 1.05s cubic-bezier(.7,0,.2,1) .15s}
+  .door{position:absolute;top:0;bottom:0;width: 50%;overflow:hidden;transition:transform 1.05s cubic-bezier(.7,0,.2,1) .15s}
   .door.l{left:0}.door.r{right:0}
   .door .bg{position:absolute;top:0;bottom:0;width:200%;background:
     radial-gradient(ellipse at center,rgba(255,255,255,.7) 0,rgba(255,255,255,0) 65%),
-    url("images/frame.jpg") center/cover no-repeat,
-    url("images/frame.jpg") center/cover no-repeat,
+    url("images/frame2.jpg") center/cover no-repeat,
+    url("images/frame2.jpg") center/cover no-repeat,
     linear-gradient(180deg,#cfe6fa,#9fd06a)}
   .door.l .bg{left:0}.door.r .bg{right:0}
   .door.l::after{content:"";position:absolute;top:0;right:0;bottom:0;width:2px;background:linear-gradient(#f6d77a,#c9962a,#f6d77a)}
