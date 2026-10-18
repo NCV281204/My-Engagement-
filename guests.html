@@ -1,208 +1,137 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="km">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex">
-  <title>Guest digital tickets</title>
-  <link href="https://fonts.googleapis.com/css2?family=Battambang:wght@400;700&family=Moul&display=swap" rel="stylesheet">
-  <style>
-    body{margin:0;padding:1.5rem 1rem;background:#fcf5e1;color:#6b4a17;font:1rem/1.6 "Battambang",system-ui,sans-serif}
-    main{max-width:60rem;margin:0 auto}
-    .form{max-width:42rem}
-    h1{font-size:1.4rem;margin:0 0 .25rem} p{margin:.25rem 0 1rem}
-    label{display:block;font-weight:700;margin:1rem 0 .25rem}
-    input,textarea{width:100%;padding:.6rem;border:1px solid #d9b46a;border-radius:8px;font:inherit;background:#fff;color:inherit}
-    textarea{min-height:9rem}
-    button{font:700 .9rem "Battambang",sans-serif;padding:.5rem .9rem;border:0;border-radius:8px;background:#b8893a;color:#fff;cursor:pointer}
-    button.alt{background:#efdfb4;color:#6b4a17}
-    ul{list-style:none;padding:0;margin:1.5rem 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:2.25rem 1.5rem}
-    li{display:flex;flex-direction:column;align-items:center;gap:.9rem}
-    li canvas{width:280px;max-width:100%;height:auto;filter:drop-shadow(0 8px 16px rgba(120,80,20,.28))}
-    .btns{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center}
-    .warn{font-size:.85rem;color:#8f6a24}
-    :focus-visible{outline:3px solid #e60012;outline-offset:2px}
-    @media print{
-      body{background:#fff;padding:0}
-      .noprint,.btns{display:none!important}
-      ul{grid-template-columns:1fr 1fr;gap:1rem;margin:0}
-      li{break-inside:avoid}
-      li canvas{width:300px;filter:none}
-    }
-  </style>
+  <title>ពិធីភ្ជាប់ពាក្យ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Moul&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
-<main>
-  <div class="form noprint">
-    <h1>Digital tickets for guests</h1>
-    <p>Paste one guest name per line. Each guest gets a ticket with their name and a QR code. Scanning it opens the invitation with their name on the cover. Names, date and photo come from <code>config.js</code> and <code>images/</code>.</p>
+<body class="locked">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+        <linearGradient id="gA" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff3c4"/><stop offset=".25" stop-color="#e9bd63"/><stop offset=".55" stop-color="#b9842e"/><stop offset=".8" stop-color="#f1cf86"/><stop offset="1" stop-color="#c99a45"/></linearGradient>
+        <linearGradient id="gB" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff3c4"/><stop offset=".25" stop-color="#e9bd63"/><stop offset=".55" stop-color="#b9842e"/><stop offset=".8" stop-color="#f1cf86"/><stop offset="1" stop-color="#c99a45"/></linearGradient>
+        <linearGradient id="gem" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff"/><stop offset=".5" stop-color="#d4ebff"/><stop offset="1" stop-color="#8fb8e8"/></linearGradient>
+        <linearGradient id="blue" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3f7fea"/><stop offset="1" stop-color="#12399a"/></linearGradient>
+        <g id="flower"><g fill="#fff" stroke="#e6d9b8" stroke-width=".4">
+          <ellipse cx="0" cy="-5.2" rx="3.4" ry="5.4"/><ellipse cx="0" cy="-5.2" rx="3.4" ry="5.4" transform="rotate(72)"/><ellipse cx="0" cy="-5.2" rx="3.4" ry="5.4" transform="rotate(144)"/><ellipse cx="0" cy="-5.2" rx="3.4" ry="5.4" transform="rotate(216)"/><ellipse cx="0" cy="-5.2" rx="3.4" ry="5.4" transform="rotate(288)"/>
+        </g><circle r="1.8" fill="#f6c744"/></g>
+        <pattern id="kfringe" x="0" y="56" width="40" height="14" patternUnits="userSpaceOnUse"><path d="M0 14C0 9 11 9 20 0C29 9 40 9 40 14Z" fill="#1a43b3" stroke="#f0c75e" stroke-width="1.4"/></pattern>
+        <pattern id="kbach" x="0" y="78" width="40" height="36" patternUnits="userSpaceOnUse">
+          <path d="M20 2C24 10 33 12 36 24C30 21 26 23 20 34C14 23 10 21 4 24C7 12 16 10 20 2Z" fill="url(#gA)" stroke="#8a5a14" stroke-width=".6"/>
+          <path d="M20 12C22 17 27 18 28 24C25 22.5 22.5 23.5 20 28C17.5 23.5 15 22.5 12 24C13 18 18 17 20 12Z" fill="#17399d"/>
+          <circle cx="20" cy="20" r="2" fill="#f6d77a"/>
+          <path d="M-3 18l3-4 3 4-3 4zM37 18l3-4 3 4-3 4z" fill="#f0c75e"/>
+        </pattern>
+      </defs></svg>
 
-    <label for="base">Your invitation address</label>
-    <input id="base" type="url" placeholder="https://YOUR-USERNAME.github.io/engagement-invitation/">
-
-    <label for="names">Guest names (one per line)</label>
-    <textarea id="names" placeholder="លោក សុខ រតនៈទិសាល និងភរិយា&#10;អ្នកនាង ចាន់ សុភា"></textarea>
-
-    <p class="warn">Names are saved only in this browser. Do not upload a guest list to GitHub. Open this page from your website or Live Server (not by double-clicking the file) so tickets can be downloaded.</p>
-    <button id="make" type="button">Make tickets</button>
-    <button id="copyAll" class="alt" type="button">Copy all links</button>
-    <button id="print" class="alt" type="button">Print tickets</button>
+<div class="gate" id="gate" role="dialog" aria-modal="true" aria-label="Open invitation">
+  <div class="door l"><div class="bg"></div></div>
+  <div class="door r"><div class="bg"></div></div>
+      
+      <g fill="url(#lf)" stroke="#2f7d32" stroke-width=".6"><path d="M10 0c24 6 40 24 38 52C22 48 8 30 10 0z"/><path d="M52 0c26 2 48 18 52 44-26 4-46-12-52-44z"/><path d="M0 40c18 4 34 18 36 40-20 0-34-14-36-40z"/><path d="M96 0c18 6 30 20 32 38-18-2-30-16-32-38z"/></g>
+      <use href="#flower" transform="translate(44 70) scale(1.6)"/>
+  <div class="gate-in">
+    <h1 class="blue">ពិធីភ្ជាប់ពាក្យ</h1>
+      <path d="M8 14H120M180 14H292" stroke="url(#gA)" stroke-width="2" fill="none"/>
+      <path d="M120 14c6-9 14-12 30-12s24 3 30 12c-6 9-14 12-30 12s-24-3-30-12z" fill="url(#gA)" stroke="#b9842e" stroke-width="1"/>
+      <path d="M150 4c5 6 5 14 0 20M140 8c4 4 4 8 0 12M160 8c-4 4-4 8 0 12" stroke="#fff" stroke-opacity=".75" fill="none"/>
+      <circle cx="108" cy="14" r="3" fill="url(#gA)"/><circle cx="192" cy="14" r="3" fill="url(#gA)"/>
+    <div class="ringbox"><img src="images/rings.png" alt="" onerror="this.remove()"></div>
+    <p class="blue lead">សូមគោរពអញ្ជើញ</p>
+    <div class="plaque" id="gateGuest"></div>
+    <button class="gold" id="open" type="button">បើកសំបុត្រអញ្ជើញ</button>
+    <small>Tap to open</small>
   </div>
-  <p id="msg" class="warn noprint" role="status"></p>
-  <ul id="out"></ul>
+      <rect y="56" width="480" height="14" fill="url(#kfringe)"/>
+      <path d="M0 70H480M0 76H480M0 116H480" stroke="#f0c75e" stroke-width="1.6"/>
+      <rect y="78" width="480" height="36" fill="url(#kbach)"/>
+      <path d="M0 123H480" stroke="#f0c75e" stroke-width="1.2" stroke-dasharray="1 5" stroke-linecap="round"/>
+      <circle cx="240" cy="86" r="31" fill="url(#blue)" stroke="#f0c75e" stroke-width="2.2"/>
+      <circle cx="240" cy="86" r="26" fill="none" stroke="#f0c75e" stroke-width=".8" stroke-dasharray="1.5 3"/>
+      <g transform="translate(240 102)"><path d="M0 0C-6-8-5-18 0-26 5-18 6-8 0 0Z" transform="rotate(-64)" fill="url(#gA)" stroke="#8a5a14" stroke-width=".7"/><path d="M0 0C-6-8-5-18 0-26 5-18 6-8 0 0Z" transform="rotate(-32)" fill="url(#gA)" stroke="#8a5a14" stroke-width=".7"/><path d="M0 0C-6-8-5-18 0-26 5-18 6-8 0 0Z" transform="rotate(0)" fill="url(#gA)" stroke="#8a5a14" stroke-width=".7"/><path d="M0 0C-6-8-5-18 0-26 5-18 6-8 0 0Z" transform="rotate(32)" fill="url(#gA)" stroke="#8a5a14" stroke-width=".7"/><path d="M0 0C-6-8-5-18 0-26 5-18 6-8 0 0Z" transform="rotate(64)" fill="url(#gA)" stroke="#8a5a14" stroke-width=".7"/><circle cy="-2" r="2.6" fill="#f6d77a"/></g>
+      <g fill="#2f6fe0" stroke="#12399a" stroke-width=".8"><ellipse cx="22" cy="62" rx="9" ry="24" transform="rotate(-35 22 62)"/><ellipse cx="86" cy="72" rx="8" ry="20" transform="rotate(40 86 72)"/><ellipse cx="458" cy="62" rx="9" ry="24" transform="rotate(35 458 62)"/><ellipse cx="394" cy="72" rx="8" ry="20" transform="rotate(-40 394 72)"/></g>
+      <use href="#flower" transform="translate(52 66) scale(3.4)"/><use href="#flower" transform="translate(428 66) scale(3.4)"/>
+      <use href="#flower" transform="translate(104 100) scale(1.8)"/><use href="#flower" transform="translate(376 100) scale(1.8)"/>
+</div>
+
+<main class="wrap">
+
+  <section class="cover">
+    <h1 class="blue">ពិធីភ្ជាប់ពាក្យ</h1>
+      <path d="M8 14H120M180 14H292" stroke="url(#gA)" stroke-width="2" fill="none"/>
+      <path d="M120 14c6-9 14-12 30-12s24 3 30 12c-6 9-14 12-30 12s-24-3-30-12z" fill="url(#gA)" stroke="#b9842e" stroke-width="1"/>
+      <path d="M150 4c5 6 5 14 0 20M140 8c4 4 4 8 0 12M160 8c-4 4-4 8 0 12" stroke="#fff" stroke-opacity=".75" fill="none"/>
+      <circle cx="108" cy="14" r="3" fill="url(#gA)"/><circle cx="192" cy="14" r="3" fill="url(#gA)"/>
+    <p class="blue names"><span id="groom"></span> និង <span id="bride"></span></p>
+    <div class="ringbox"><img src="images/rings." alt="" onerror="this.remove()"><i class="sp s1"></i><i class="sp s2"></i><i class="sp s3"></i></div>
+    <p class="blue lead">សូមគោរពអញ្ជើញ</p>
+    <div class="plaque" id="guest"></div>
+    <p class="blue dateline" id="dateCover"></p>
+    <a class="scroll" href="#details">សូមអូសចុះក្រោម<small>Scroll down</small></a>
+      <defs><linearGradient id="lf" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#a6dc5c"/><stop offset="1" stop-color="#3f9a3a"/></linearGradient></defs>
+      <g fill="url(#lf)" stroke="#2f7d32" stroke-width=".6"><path d="M10 0c24 6 40 24 38 52C22 48 8 30 10 0z"/><path d="M52 0c26 2 48 18 52 44-26 4-46-12-52-44z"/><path d="M0 40c18 4 34 18 36 40-20 0-34-14-36-40z"/><path d="M96 0c18 6 30 20 32 38-18-2-30-16-32-38z"/></g>
+      <use href="#flower" transform="translate(44 70) scale(1.6)"/>
+  </section>
+
+  <section class="page" id="details">
+    <div class="couple">
+      <div><small>កូនប្រុស</small><strong id="groom2"></strong></div>
+      <span class="heart" aria-hidden="true">♡</span>
+      <div><small>កូនស្រី</small><strong id="bride2"></strong></div>
+    </div>
+    <h2>យើងខ្ញុំមានកិត្តិយសសូមគោរពអញ្ជើញ</h2>
+    <p class="body">សម្តេច ទ្រង់ ឯកឧត្តម លោកជំទាវ លោកអ្នកឧកញ៉ា អ្នកឧកញ៉ា ឧកញ៉ា លោក លោកស្រី អ្នកនាង កញ្ញា ព្រមទាំងប្រិយមិត្តអញ្ជើញចូលរួមជាអធិបតី និងជាភ្ញៀវកិត្តិយស ដើម្បីប្រសិទ្ធពរជ័យសិរីសួស្តី ជ័យមង្គល ក្នុងពិធីភ្ជាប់ពាក្យ កូនប្រុសស្រី របស់យើងខ្ញុំទាំងពីរ។</p>
+    <div class="divider"></div>
+    <h3 id="countTitle">ចំនួនថ្ងៃរាប់ថយក្រោយ</h3>
+    <p class="date" id="dateMain"></p>
+    <div id="count" class="count" aria-live="polite"></div>
+  </section>
+
+  <section class="page">
+    <h2 class="big">ទីតាំងកម្មវិធី</h2>
+    <div class="map">
+      <iframe id="mapFrame" title="ទីតាំងកម្មវិធី (Google Map)" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      <p id="mapNote" hidden>Map link not recognised. In config.js, paste the long Google Maps link (not a short maps.app.goo.gl link).</p>
+      <p id="venueBox" hidden><strong id="venue"></strong><br><span id="address"></span></p>
+    </div>
+    <a class="gold" id="mapLink" href="#" target="_blank" rel="noopener">មើលក្នុង Google Map</a>
+  </section>
+
+  <section class="page">
+    <h2 class="big">កម្រងរូបភាព</h2>
+    <div class="gallery">
+      <figure data-hint="images/photo1.jpg"><img src="images/photo1.jpg" alt="" loading="lazy" onerror="this.remove()"></figure>
+      <figure data-hint="images/photo2.jpg"><img src="images/photo2.jpg" alt="" loading="lazy" onerror="this.remove()"></figure>
+      <figure data-hint="images/photo3.jpg"><img src="images/photo3.jpg" alt="" loading="lazy" onerror="this.remove()"></figure>
+      <figure data-hint="images/photo4.jpg"><img src="images/photo4.jpg" alt="" loading="lazy" onerror="this.remove()"></figure>
+    </div>
+  </section>
+
+  <section class="page">
+    <h2>សូមអរគុណ និងសូមអភ័យទោស</h2>
+    <p class="body">យើងខ្ញុំទាំងពីរ សូមថ្លែងអំណរគុណយ៉ាងជ្រាលជ្រៅ ចំពោះវត្តមានដ៏ឧត្តុង្គឧត្តមរបស់ភ្ញៀវកិត្តិយសទាំងអស់ ដែលបានអញ្ជើញចូលរួមក្នុងពិធីភ្ជាប់ពាក្យរបស់យើងខ្ញុំ។ យើងខ្ញុំសូមអភ័យទោស ប្រសិនបើមិនបានជូនលិខិតអញ្ជើញដោយផ្ទាល់។</p>
+    <h3 class="khqr">ចងដៃតាមរយៈ KHQR</h3>
+    <div class="qr">
+      <figure data-hint="images/khqr.png"><img src="images/khqr.png" alt="KHQR" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='images/khqr-usd.png'}else{this.remove()}"></figure>
+    </div>
+    <div class="divider"></div>
+  </section>
+
 </main>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+
+<audio id="bgm" loop preload="auto">
+  <source src="music/music.mp3" type="audio/mpeg">
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+<button id="musicBtn" class="music" type="button" aria-label="Play or pause music" aria-pressed="false">
+  <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M9 3v11.3A3.5 3.5 0 1 0 11 17V7h6V3H9z"/></svg>
+  <span class="slash"></span>
+</button>
 <script src="config.js"></script>
-<script>
-const $ = (id) => document.getElementById(id);
-const SAVE = "guest-links-v1";
-let saved = {};
-try { saved = JSON.parse(localStorage.getItem(SAVE) || "{}"); } catch (e) {}
-const guess = location.protocol.startsWith("http") ? new URL("./", location.href).href : "";
-$("base").value = saved.base || guess;
-$("names").value = saved.names || "";
-
-const getNames = () => $("names").value.split("\n").map((n) => n.trim()).filter(Boolean);
-const link = (name) => {
-  const u = new URL("index.html", $("base").value.trim() || location.href);
-  u.searchParams.set("guest", name);
-  return u.href;
-};
-
-// ---- QR code: smallest size that fits; lower error correction for long names ----
-function qrFor(text) {
-  let q;
-  for (const level of ["M", "L"]) {
-    q = qrcode(0, level); q.addData(text); q.make();
-    if (q.getModuleCount() <= 65) break;
-  }
-  return q;
-}
-
-// ---- Ticket picture (drawn on a canvas, so the preview and the download are identical) ----
-const W = 900, H = 1580, CUT = 860, GOLD = "#b8893a", GOLD_D = "#8f6a24";
-const loadImg = (src) => new Promise((ok) => { const i = new Image(); i.onload = () => ok(i); i.onerror = () => ok(null); i.src = src; });
-let photoP = null;
-const getPhoto = () => photoP || (photoP = loadImg("images/ticket.jpg").then((i) => i || loadImg("images/background.jpg")));
-
-function roundRect(c, x, y, w, h, r) {
-  c.beginPath(); c.moveTo(x + r, y); c.arcTo(x + w, y, x + w, y + h, r); c.arcTo(x + w, y + h, x, y + h, r);
-  c.arcTo(x, y + h, x, y, r); c.arcTo(x, y, x + w, y, r); c.closePath();
-}
-// Shrink the font until the text fits the width.
-function fit(c, text, font, maxW, size, min) {
-  for (; size > min; size -= 2) { c.font = font(size); if (c.measureText(text).width <= maxW) break; }
-  c.font = font(size);
-}
-function brackets(c, x, y, s, len) {
-  c.beginPath();
-  [[x, y, 1, 1], [x + s, y, -1, 1], [x, y + s, 1, -1], [x + s, y + s, -1, -1]].forEach(([px, py, dx, dy]) => {
-    c.moveTo(px + dx * len, py); c.lineTo(px, py); c.lineTo(px, py + dy * len);
-  });
-  c.stroke();
-}
-
-async function drawTicket(canvas, name, url) {
-  canvas.width = W; canvas.height = H;
-  const c = canvas.getContext("2d");
-  await Promise.all([document.fonts.load("48px Moul", "ក"), document.fonts.load("28px Battambang", "ក")]);
-  const photo = await getPhoto();
-  c.save(); roundRect(c, 0, 0, W, H, 60); c.clip();
-
-  // card
-  const bg = c.createLinearGradient(0, 0, 0, H); bg.addColorStop(0, "#fffdf7"); bg.addColorStop(1, "#faefd3");
-  c.fillStyle = bg; c.fillRect(0, 0, W, H);
-
-  // couple photo at the top, fading into the card
-  const PH = 720;
-  if (photo) {
-    const s = Math.max(W / photo.width, PH / photo.height);
-    c.drawImage(photo, (W - photo.width * s) / 2, (PH - photo.height * s) * 0.2, photo.width * s, photo.height * s);
-  } else {
-    const g = c.createLinearGradient(0, 0, W, PH); g.addColorStop(0, "#f3dfa6"); g.addColorStop(1, "#d9a74a");
-    c.fillStyle = g; c.fillRect(0, 0, W, PH);
-    c.strokeStyle = "#fff"; c.lineWidth = 14; c.globalAlpha = .8;
-    c.beginPath(); c.arc(380, 330, 130, 0, 7); c.stroke(); c.beginPath(); c.arc(520, 280, 115, 0, 7); c.stroke(); c.globalAlpha = 1;
-  }
-  const fade = c.createLinearGradient(0, 430, 0, PH); fade.addColorStop(0, "rgba(255,250,238,0)"); fade.addColorStop(1, "rgba(255,250,238,1)");
-  c.fillStyle = fade; c.fillRect(0, 430, W, PH - 430);
-
-  // names and date
-  c.textAlign = "center"; c.fillStyle = GOLD;
-  fit(c, `${CONFIG.groom} និង ${CONFIG.bride}`, (s) => `${s}px Moul, serif`, 800, 62, 30);
-  c.fillText(`${CONFIG.groom} និង ${CONFIG.bride}`, W / 2, 665);
-  c.fillStyle = GOLD_D;
-  c.textAlign = "left";  c.font = "27px Battambang, sans-serif"; c.fillText(dateKh, 64, 755); c.fillText(timeKh, 64, 802);
-  c.textAlign = "right"; c.fillText(dateEn, W - 64, 755); c.fillText(timeEn, W - 64, 802);
-
-  // perforation with side notches
-  c.strokeStyle = "#dcc590"; c.lineWidth = 3; c.setLineDash([12, 12]);
-  c.beginPath(); c.moveTo(80, CUT); c.lineTo(W - 80, CUT); c.stroke(); c.setLineDash([]);
-  c.save(); c.globalCompositeOperation = "destination-out";
-  c.beginPath(); c.arc(0, CUT, 38, 0, 7); c.arc(W, CUT, 38, 0, 7); c.fill(); c.restore();
-
-  // guest
-  c.textAlign = "center"; c.fillStyle = GOLD_D; c.font = "30px Battambang, sans-serif";
-  c.fillText("សូមគោរពអញ្ជើញ", W / 2, 945);
-  c.fillStyle = GOLD; fit(c, name, (s) => `${s}px Moul, serif`, 760, 50, 24);
-  c.fillText(name, W / 2, 1020);
-
-  // QR code with gold corners
-  const q = qrFor(url), n = q.getModuleCount(), px = Math.floor(380 / (n + 8)), qs = (n + 8) * px, qx = (W - qs) / 2, qy = 1075;
-  c.fillStyle = "#fff"; roundRect(c, qx, qy, qs, qs, 14); c.fill();
-  c.fillStyle = "#1a1203";
-  for (let r = 0; r < n; r++) for (let k = 0; k < n; k++) if (q.isDark(r, k)) c.fillRect(qx + (k + 4) * px, qy + (r + 4) * px, px, px);
-  c.strokeStyle = GOLD; c.lineWidth = 8; c.lineCap = "round"; brackets(c, qx - 30, qy - 30, qs + 60, 64);
-  c.fillStyle = GOLD_D; c.font = "27px Battambang, sans-serif";
-  c.fillText("ស្កេនដើម្បីបើកសំបុត្រអញ្ជើញ", W / 2, qy + qs + 92);
-
-  c.restore();
-  c.strokeStyle = "#ecd9a4"; c.lineWidth = 4; roundRect(c, 2, 2, W - 4, H - 4, 58); c.stroke();
-}
-
-// ---- Page ----
-let runId = 0;
-async function make() {
-  const names = getNames(), run = ++runId;
-  try { localStorage.setItem(SAVE, JSON.stringify({ base: $("base").value, names: $("names").value })); } catch (e) {}
-  $("out").innerHTML = ""; $("msg").textContent = "";
-  if (typeof qrcode === "undefined") { $("msg").textContent = "The QR code library did not load. Connect to the internet and reload this page."; return; }
-  if (!$("base").value.trim()) $("msg").textContent = "Type your invitation address above first, so the QR codes point to your live site.";
-  for (const [i, name] of names.entries()) {
-    const url = link(name), li = document.createElement("li"), canvas = document.createElement("canvas");
-    canvas.setAttribute("role", "img"); canvas.setAttribute("aria-label", "Ticket for " + name);
-    const file = `ticket-${i + 1}-${name.replace(/[\\/:*?"<>|]+/g, "").trim().slice(0, 40) || "guest"}.png`;
-    const toBlob = () => new Promise((ok) => { try { canvas.toBlob(ok); } catch (e) { ok(null); } });
-    const noFile = () => { $("msg").textContent = "Could not make the picture. Open this page from your website or Live Server (not by double-clicking the file)."; };
-
-    const dl = document.createElement("button"); dl.textContent = "Download ticket";
-    dl.onclick = async () => {
-      const b = await toBlob(); if (!b) return noFile();
-      const a = document.createElement("a"); a.href = URL.createObjectURL(b); a.download = file; a.click(); URL.revokeObjectURL(a.href);
-    };
-    const share = document.createElement("button"); share.className = "alt"; share.textContent = "Share";
-    share.onclick = async () => {
-      try {
-        const b = await toBlob();
-        const f = b && new File([b], file, { type: "image/png" });
-        if (f && navigator.canShare && navigator.canShare({ files: [f] })) { await navigator.share({ files: [f], title: name, text: url }); return; }
-      } catch (e) { if (e.name === "AbortError") return; }
-      window.open("https://t.me/share/url?url=" + encodeURIComponent(url) + "&text=" + encodeURIComponent("សូមគោរពអញ្ជើញ " + name), "_blank", "noopener");
-    };
-    const copy = document.createElement("button"); copy.className = "alt"; copy.textContent = "Copy link";
-    copy.onclick = () => navigator.clipboard.writeText(url).then(() => { copy.textContent = "Copied"; setTimeout(() => copy.textContent = "Copy link", 1500); });
-
-    const btns = document.createElement("div"); btns.className = "btns"; btns.append(dl, share, copy);
-    li.append(canvas, btns);
-    await drawTicket(canvas, name, url);
-    if (run !== runId) return;
-    $("out").append(li);
-  }
-}
-$("make").onclick = make;
-$("copyAll").onclick = () => navigator.clipboard.writeText(getNames().map((n) => n + "\t" + link(n)).join("\n"));
-$("print").onclick = async () => { if (!$("out").children.length) await make(); window.print(); };
-if ($("names").value) make();
-</script>
+<script src="script.js"></script>
 </body>
 </html>
