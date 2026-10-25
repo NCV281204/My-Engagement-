@@ -5,75 +5,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex">
   <title>ពិធីភ្ជាប់ពាក្យ</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Moul&display=swap" rel="stylesheet">
+  <link rel="preload" href="fonts/AKbalthom_Kbach_Regular.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="stylesheet" href="style.css">
 </head>
 <body class="locked">
-<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
-        <linearGradient id="gA" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff3c4"/><stop offset=".25" stop-color="#e9bd63"/><stop offset=".55" stop-color="#b9842e"/><stop offset=".8" stop-color="#f1cf86"/><stop offset="1" stop-color="#c99a45"/></linearGradient>
-        <linearGradient id="gB" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff3c4"/><stop offset=".25" stop-color="#e9bd63"/><stop offset=".55" stop-color="#b9842e"/><stop offset=".8" stop-color="#f1cf86"/><stop offset="1" stop-color="#c99a45"/></linearGradient>
-        <linearGradient id="gem" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff"/><stop offset=".5" stop-color="#d4ebff"/><stop offset="1" stop-color="#8fb8e8"/></linearGradient>
-        <linearGradient id="blue" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3f7fea"/><stop offset="1" stop-color="#12399a"/></linearGradient>
-        <g id="flower"><g fill="#fff" stroke="#e6d9b8" stroke-width=".4">
-          <ellipse cx="0" cy="-5.2" rx="3.4" ry="5.4"/><ellipse cx="0" cy="-5.2" rx="3.4" ry="5.4" transform="rotate(72)"/><ellipse cx="0" cy="-5.2" rx="3.4" ry="5.4" transform="rotate(144)"/><ellipse cx="0" cy="-5.2" rx="3.4" ry="5.4" transform="rotate(216)"/><ellipse cx="0" cy="-5.2" rx="3.4" ry="5.4" transform="rotate(288)"/>
-        </g><circle r="1.8" fill="#f6c744"/></g>
-        <pattern id="kfringe" x="0" y="56" width="40" height="14" patternUnits="userSpaceOnUse"><path d="M0 14C0 9 11 9 20 0C29 9 40 9 40 14Z" fill="#1a43b3" stroke="#f0c75e" stroke-width="1.4"/></pattern>
-        <pattern id="kbach" x="0" y="78" width="40" height="36" patternUnits="userSpaceOnUse">
-          <path d="M20 2C24 10 33 12 36 24C30 21 26 23 20 34C14 23 10 21 4 24C7 12 16 10 20 2Z" fill="url(#gA)" stroke="#8a5a14" stroke-width=".6"/>
-          <path d="M20 12C22 17 27 18 28 24C25 22.5 22.5 23.5 20 28C17.5 23.5 15 22.5 12 24C13 18 18 17 20 12Z" fill="#17399d"/>
-          <circle cx="20" cy="20" r="2" fill="#f6d77a"/>
-          <path d="M-3 18l3-4 3 4-3 4zM37 18l3-4 3 4-3 4z" fill="#f0c75e"/>
-        </pattern>
-      </defs></svg>
-
 <div class="gate" id="gate" role="dialog" aria-modal="true" aria-label="Open invitation">
   <div class="door l"><div class="bg"></div></div>
   <div class="door r"><div class="bg"></div></div>
       
-      <g fill="url(#lf)" stroke="#2f7d32" stroke-width=".6"><path d="M10 0c24 6 40 24 38 52C22 48 8 30 10 0z"/><path d="M52 0c26 2 48 18 52 44-26 4-46-12-52-44z"/><path d="M0 40c18 4 34 18 36 40-20 0-34-14-36-40z"/><path d="M96 0c18 6 30 20 32 38-18-2-30-16-32-38z"/></g>
-      <use href="#flower" transform="translate(44 70) scale(1.6)"/>
   <div class="gate-in">
     <h1 class="blue">ពិធីភ្ជាប់ពាក្យ</h1>
-      <path d="M8 14H120M180 14H292" stroke="url(#gA)" stroke-width="2" fill="none"/>
-      <path d="M120 14c6-9 14-12 30-12s24 3 30 12c-6 9-14 12-30 12s-24-3-30-12z" fill="url(#gA)" stroke="#b9842e" stroke-width="1"/>
-      <path d="M150 4c5 6 5 14 0 20M140 8c4 4 4 8 0 12M160 8c-4 4-4 8 0 12" stroke="#fff" stroke-opacity=".75" fill="none"/>
-      <circle cx="108" cy="14" r="3" fill="url(#gA)"/><circle cx="192" cy="14" r="3" fill="url(#gA)"/>
     <div class="ringbox"><img src="images/rings.png" alt="" onerror="this.remove()"></div>
     <p class="blue lead">សូមគោរពអញ្ជើញ</p>
     <div class="plaque" id="gateGuest"></div><br>
     <button class="gold" id="open" type="button">បើកសំបុត្រអញ្ជើញ</button>
   </div>
-      <rect y="56" width="480" height="14" fill="url(#kfringe)"/>
-      <path d="M0 70H480M0 76H480M0 116H480" stroke="#f0c75e" stroke-width="1.6"/>
-      <rect y="78" width="480" height="36" fill="url(#kbach)"/>
-      <path d="M0 123H480" stroke="#f0c75e" stroke-width="1.2" stroke-dasharray="1 5" stroke-linecap="round"/>
-      <circle cx="240" cy="86" r="31" fill="url(#blue)" stroke="#f0c75e" stroke-width="2.2"/>
-      <circle cx="240" cy="86" r="26" fill="none" stroke="#f0c75e" stroke-width=".8" stroke-dasharray="1.5 3"/>
-      <g transform="translate(240 102)"><path d="M0 0C-6-8-5-18 0-26 5-18 6-8 0 0Z" transform="rotate(-64)" fill="url(#gA)" stroke="#8a5a14" stroke-width=".7"/><path d="M0 0C-6-8-5-18 0-26 5-18 6-8 0 0Z" transform="rotate(-32)" fill="url(#gA)" stroke="#8a5a14" stroke-width=".7"/><path d="M0 0C-6-8-5-18 0-26 5-18 6-8 0 0Z" transform="rotate(0)" fill="url(#gA)" stroke="#8a5a14" stroke-width=".7"/><path d="M0 0C-6-8-5-18 0-26 5-18 6-8 0 0Z" transform="rotate(32)" fill="url(#gA)" stroke="#8a5a14" stroke-width=".7"/><path d="M0 0C-6-8-5-18 0-26 5-18 6-8 0 0Z" transform="rotate(64)" fill="url(#gA)" stroke="#8a5a14" stroke-width=".7"/><circle cy="-2" r="2.6" fill="#f6d77a"/></g>
-      <g fill="#2f6fe0" stroke="#12399a" stroke-width=".8"><ellipse cx="22" cy="62" rx="9" ry="24" transform="rotate(-35 22 62)"/><ellipse cx="86" cy="72" rx="8" ry="20" transform="rotate(40 86 72)"/><ellipse cx="458" cy="62" rx="9" ry="24" transform="rotate(35 458 62)"/><ellipse cx="394" cy="72" rx="8" ry="20" transform="rotate(-40 394 72)"/></g>
-      <use href="#flower" transform="translate(52 66) scale(3.4)"/><use href="#flower" transform="translate(428 66) scale(3.4)"/>
-      <use href="#flower" transform="translate(104 100) scale(1.8)"/><use href="#flower" transform="translate(376 100) scale(1.8)"/>
 </div>
 
 <main class="wrap">
 
   <section class="cover">
     <h1 class="blue">ពិធីភ្ជាប់ពាក្យ</h1>
-      <path d="M8 14H120M180 14H292" stroke="url(#gA)" stroke-width="2" fill="none"/>
-      <path d="M120 14c6-9 14-12 30-12s24 3 30 12c-6 9-14 12-30 12s-24-3-30-12z" fill="url(#gA)" stroke="#b9842e" stroke-width="1"/>
-      <path d="M150 4c5 6 5 14 0 20M140 8c4 4 4 8 0 12M160 8c-4 4-4 8 0 12" stroke="#fff" stroke-opacity=".75" fill="none"/>
-      <circle cx="108" cy="14" r="3" fill="url(#gA)"/><circle cx="192" cy="14" r="3" fill="url(#gA)"/>
-    <p class="blue names"><span id="groom"></span> និង <span id="bride"></span></p>
-    <div class="ringbox"><img src="images/rings." alt="" onerror="this.remove()"><i class="sp s1"></i><i class="sp s2"></i><i class="sp s3"></i></div>
+    <p class="blue name l" id="groom"></p>
+    <div class="ringbox"><img src="images/rings.png" alt="" onerror="this.remove()"><i class="sp s1"></i><i class="sp s2"></i><i class="sp s3"></i></div>
+    <p class="blue name r" id="bride"></p>
+    <div class="card">
     <p class="blue lead">សូមគោរពអញ្ជើញ</p>
     <div class="plaque" id="guest"></div>
     <p class="blue dateline" id="dateCover"></p>
+    </div>
     <a class="scroll" href="#details">សូមអូសចុះក្រោម</a>
-      <defs><linearGradient id="lf" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#a6dc5c"/><stop offset="1" stop-color="#3f9a3a"/></linearGradient></defs>
-      <g fill="url(#lf)" stroke="#2f7d32" stroke-width=".6"><path d="M10 0c24 6 40 24 38 52C22 48 8 30 10 0z"/><path d="M52 0c26 2 48 18 52 44-26 4-46-12-52-44z"/><path d="M0 40c18 4 34 18 36 40-20 0-34-14-36-40z"/><path d="M96 0c18 6 30 20 32 38-18-2-30-16-32-38z"/></g>
-      <use href="#flower" transform="translate(44 70) scale(1.6)"/>
   </section>
 
   <section class="page" id="details">
@@ -111,8 +72,8 @@
   </section>
 
   <section class="page">
-    <h2>សូមអរគុណនិងសូមអភ័យទោស</h2>
-    <p class="body">យើងខ្ញុំទាំងពីរ សូមថ្លែងអំណរគុណយ៉ាងជ្រាលជ្រៅចំពោះវត្តមានដ៏ឧត្តុង្គឧត្តមរបស់ភ្ញៀវកិត្តិយសទាំងអស់ដែលបានអញ្ជើញចូលរួមក្នុងពិធីភ្ជាប់ពាក្យរបស់យើងខ្ញុំ។យើងខ្ញុំ សូមអភ័យទោសប្រសិនបើមិនបានជូនលិខិតអញ្ជើញដោយផ្ទាល់។</p>
+    <h2>សូមអរគុណ និងសូមអភ័យទោស</h2>
+    <p class="body">យើងខ្ញុំទាំងពីរ សូមថ្លែងអំណរគុណយ៉ាងជ្រាលជ្រៅ ចំពោះវត្តមានដ៏ឧត្តុង្គឧត្តមរបស់ភ្ញៀវកិត្តិយសទាំងអស់ ដែលបានអញ្ជើញចូលរួមក្នុងពិធីភ្ជាប់ពាក្យរបស់យើងខ្ញុំ។ យើងខ្ញុំសូមអភ័យទោស ប្រសិនបើមិនបានជូនលិខិតអញ្ជើញដោយផ្ទាល់។</p>
     <h3 class="khqr">ចងដៃតាមរយៈ KHQR</h3>
     <div class="qr">
       <figure data-hint="images/khqr.png"><img src="images/khqr.png" alt="KHQR" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='images/khqr-usd.png'}else{this.remove()}"></figure>
