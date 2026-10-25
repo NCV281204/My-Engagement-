@@ -3,10 +3,9 @@
 const CONFIG = {
   groom: "នៅ ចំណានវិជ្ជា",
   bride: "ទេស និស្ស័យ",
-  guest: "Spescial Guest",   // or share links like index.html?guest=ឈ្មោះភ្ញៀវ
+  guest: "លោក សុខ រតនៈទិសាល និងភរិយា",   // or share links like index.html?guest=ឈ្មោះភ្ញៀវ
   date: "2026-10-16",                      // YYYY-MM-DD
   time: "11:00",                           // 24-hour, Cambodia time (UTC+7)
-  hours: 4,                                // length of the event
   venue: "",      // optional line of text under the map, for example the hall name
   address: "",    // optional second line under the map
   // Paste your Google Maps link here. The map on the page and the button both follow it.
