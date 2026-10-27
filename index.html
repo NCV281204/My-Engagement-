@@ -5,36 +5,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex">
   <title>ពិធីភ្ជាប់ពាក្យ</title>
-  <link rel="preload" href="fonts/AKbalthom_Kbach_Regular.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Moul&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body class="locked">
+
 <div class="gate" id="gate" role="dialog" aria-modal="true" aria-label="Open invitation">
   <div class="door l"><div class="bg"></div></div>
   <div class="door r"><div class="bg"></div></div>
-      
   <div class="gate-in">
-    <h1 class="blue">ពិធីភ្ជាប់ពាក្យ</h1>
+    <h1 class="ink">ពិធីភ្ជាប់ពាក្យ</h1>
     <div class="ringbox"><img src="images/rings.png" alt="" onerror="this.remove()"></div>
-    <p class="blue lead">សូមគោរពអញ្ជើញ</p>
-    <div class="plaque" id="gateGuest"></div><br>
+    <p class="ink lead">សូមគោរពអញ្ជើញ</p>
+    <div class="plaque" id="gateGuest"></div>
     <button class="gold" id="open" type="button">បើកសំបុត្រអញ្ជើញ</button>
+    <small class="ink">Tap to open</small>
   </div>
 </div>
 
 <main class="wrap">
 
   <section class="cover">
-    <h1 class="blue">ពិធីភ្ជាប់ពាក្យ</h1>
-    <p class="blue name l" id="groom"></p>
-    <div class="ringbox"><img src="images/rings.png" alt="" onerror="this.remove()"><i class="sp s1"></i><i class="sp s2"></i><i class="sp s3"></i></div>
-    <p class="blue name r" id="bride"></p>
-    <div class="card">
-    <p class="blue lead">សូមគោរពអញ្ជើញ</p>
-    <div class="plaque" id="guest"></div>
-    <p class="blue dateline" id="dateCover"></p>
+    <h1 class="ink">ពិធីភ្ជាប់ពាក្យ</h1>
+    <div class="pair">
+      <span class="ink lab">កូនប្រុស</span>
+      <div class="ringbox"><img src="images/rings.png" alt="" onerror="this.remove()"><i class="sp s1"></i><i class="sp s2"></i><i class="sp s3"></i></div>
+      <span class="ink lab">កូនស្រី</span>
+      <span class="ink nm l" id="groom"></span>
+      <span class="ink nm r" id="bride"></span>
     </div>
-    <a class="scroll" href="#details">សូមអូសចុះក្រោម</a>
+    <p class="ink bigdate" id="dateShort"></p>
+    <p class="ink lead">សូមគោរពអញ្ជើញ</p>
+    <div class="plaque" id="guest"></div>
+    <p class="ink dateline" id="dateCover"></p>
+    <a class="scroll" href="#details">សូមអូសចុះក្រោម<small>Scroll down</small></a>
   </section>
 
   <section class="page" id="details">
@@ -73,7 +79,7 @@
 
   <section class="page">
     <h2>សូមអរគុណ និងសូមអភ័យទោស</h2>
-    <p class="body">យើងខ្ញុំទាំងពីរ សូមថ្លែងអំណរគុណយ៉ាងជ្រាលជ្រៅ ចំពោះវត្តមានដ៏ឧត្តុង្គឧត្តមរបស់ភ្ញៀវកិត្តិយសទាំងអស់ដែលបានអញ្ជើញចូលរួមក្នុងពិធីភ្ជាប់ពាក្យរបស់យើងខ្ញុំ។ យើងខ្ញុំសូមអភ័យទោស ប្រសិនបើមិនបានជូនលិខិតអញ្ជើញដោយផ្ទាល់។</p>
+    <p class="body">យើងខ្ញុំទាំងពីរ សូមថ្លែងអំណរគុណយ៉ាងជ្រាលជ្រៅ ចំពោះវត្តមានដ៏ឧត្តុង្គឧត្តមរបស់ភ្ញៀវកិត្តិយសទាំងអស់ ដែលបានអញ្ជើញចូលរួមក្នុងពិធីភ្ជាប់ពាក្យរបស់យើងខ្ញុំ។ យើងខ្ញុំសូមអភ័យទោស ប្រសិនបើមិនបានជូនលិខិតអញ្ជើញដោយផ្ទាល់។</p>
     <h3 class="khqr">ចងដៃតាមរយៈ KHQR</h3>
     <div class="qr">
       <figure data-hint="images/khqr.png"><img src="images/khqr.png" alt="KHQR" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='images/khqr-usd.png'}else{this.remove()}"></figure>
@@ -84,7 +90,7 @@
 </main>
 
 <audio id="bgm" loop preload="auto">
-  <source src="music.mp3" type="audio/mpeg">
+  <source src="music/music.mp3" type="audio/mpeg">
   <source src="music.mp3" type="audio/mpeg">
 </audio>
 <button id="musicBtn" class="music" type="button" aria-label="Play or pause music" aria-pressed="false">
