@@ -5,6 +5,7 @@ $("groom").textContent = $("groom2").textContent = CONFIG.groom;
 $("bride").textContent = $("bride2").textContent = CONFIG.bride;
 $("guest").textContent = $("gateGuest").textContent = guest;
 $("dateCover").textContent = $("dateMain").textContent = dateText;
+$("dateShort").textContent = dateShort;
 $("venue").textContent = CONFIG.venue;
 $("address").textContent = CONFIG.address;
 $("venueBox").hidden = !(CONFIG.venue || CONFIG.address);
