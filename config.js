@@ -33,3 +33,7 @@ const [dateKh, timeKh, dateEn, timeEn] = (() => {
   ];
 })();
 const dateText = `${dateKh} ${timeKh}`;
+const dateShort = (() => {              // 16.10.2026 in Khmer numbers
+  const [y, m, d] = CONFIG.date.split("-");
+  return `${kh(d)}.${kh(m)}.${kh(y)}`;
+})();
