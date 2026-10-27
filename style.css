@@ -1,9 +1,10 @@
-/* Text: AKbalthom Kbach font in #993333. Cover and ticket: images/bg-pink.jpg (the pink flowers).
+/* Text: AKbalthom Kbach font in #993333. Cover and ticket: images/bg-pink.jpg. Pages below: images/pink1.jpg. Doors: images/Door.jpg.
    Pages below: images/frame.jpg. Put your font file in the fonts folder (see README). */
 @font-face{font-family:"AKbalthom Kbach";font-display:swap;src:local("AKbalthom Kbach"),local("AKbalthom Kbach Regular"),
   url("fonts/AKbalthom-Kbach.ttf") format("truetype"),url("fonts/AKbalthom Kbach Regular.ttf") format("truetype"),url("fonts/AKbalthom.ttf") format("truetype")}
 :root{--ink:#993333;--ivory:#fcf5e1;--pinkbg:linear-gradient(160deg,#f8dfda,#f2c6c0 60%,#f8e2dd);
-  --bgimg:url("images/bg-pink.jpg"),var(--pinkbg)}
+  --bgimg:url("images/bg-pink.jpg"),var(--pinkbg);
+  --pagebg:url("images/pink1.jpg"),url("images/frame.jpg"),linear-gradient(#fcf5e1,#fcf5e1)}
 *{box-sizing:border-box;font-weight:400}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{margin:0;background:#efe3c4;color:var(--ink);font:400 1rem/1.9 "AKbalthom Kbach","Moul","Noto Sans Khmer",serif;font-synthesis:none}
@@ -12,7 +13,7 @@ h1,h2,h3{margin:0}
 .wrap{max-width:480px;margin:0 auto;background:var(--ivory) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='none' stroke='%23ecd9a4' stroke-width='1.2'%3E%3Cpath d='M40 6c8 10 8 20 0 34-8-14-8-24 0-34zM40 74c8-10 8-20 0-34-8 14-8 24 0 34zM6 40c10-8 20-8 34 0-14 8-24 8-34 0zM74 40c-10 8-20 8-34 0 14-8 24-8 34 0z'/%3E%3Ccircle cx='40' cy='40' r='4'/%3E%3C/g%3E%3C/svg%3E");box-shadow:0 0 40px rgba(90,60,10,.18)}
 .wrap{isolation:isolate}
 .wrap::before{content:"";position:fixed;z-index:-1;top:0;bottom:0;left:50%;width:min(100%,480px);transform:translateX(-50%);
-  background:url("images/frame.jpg") center/cover no-repeat,var(--ivory)}
+  background-image:var(--pagebg);background-size:cover;background-position:center;background-repeat:no-repeat}
 /* Text with a soft white halo and a light shadow, like the design */
 .ink{text-shadow:0 0 5px #fff,0 0 12px rgba(255,255,255,.9),3px 3px 2px rgba(70,40,40,.3)}
 
@@ -97,6 +98,7 @@ body.locked{overflow:hidden}
 .gate.open{pointer-events:none}
 .gate-in{position:relative;z-index:1;width:min(100%,420px);display:flex;flex-direction:column;align-items:center;gap:calc(2.4*var(--u));transition:opacity .4s ease,transform .7s ease}
 .gate.open .gate-in{opacity:0;transform:scale(1.08)}
+.gate-in::before{content:"";position:absolute;inset:-6% -12%;z-index:-1;background:radial-gradient(ellipse at center,rgba(255,255,255,.55),rgba(255,255,255,0) 70%);pointer-events:none}
 .gate h1{font-size:calc(17*var(--u));line-height:1.4}
 .gate .lead{margin:0}
 .gate .plaque{width:min(86%,380px);font-size:calc(4.4*var(--u))}
@@ -106,9 +108,9 @@ body.locked{overflow:hidden}
 .door{position:absolute;top:0;bottom:0;width:50%;overflow:hidden;transition:transform 1.2s cubic-bezier(.7,0,.2,1) .15s}
 .door.l{left:0;box-shadow:inset -14px 0 22px rgba(120,50,60,.28)}
 .door.r{right:0;box-shadow:inset 14px 0 22px rgba(120,50,60,.28)}
-.door .bg{position:absolute;top:0;bottom:0;width:200%;background:
-  linear-gradient(90deg,rgba(150,60,70,.22),rgba(255,255,255,.3) 50%,rgba(150,60,70,.22)) 0 0/44px 100% repeat-x,
-  linear-gradient(180deg,#f7dad6,#f0c3bd)}
+.door .bg{position:absolute;top:0;bottom:0;width:200%;
+  background-image:url("images/Door.jpg"),linear-gradient(90deg,rgba(150,60,70,.22),rgba(255,255,255,.3) 50%,rgba(150,60,70,.22)),linear-gradient(180deg,#f7dad6,#f0c3bd);
+  background-size:cover,44px 100%,100% 100%;background-position:center,0 0,0 0;background-repeat:no-repeat,repeat-x,no-repeat}
 .door.l .bg{left:0}.door.r .bg{right:0}
 .door.l::after{content:"";position:absolute;top:0;right:0;bottom:0;width:3px;background:linear-gradient(#f6d77a,#c9962a,#f6d77a)}
 .gate.open .l{transform:translateX(-101%)}
