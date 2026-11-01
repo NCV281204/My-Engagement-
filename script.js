@@ -5,7 +5,9 @@ $("groom").textContent = $("groom2").textContent = CONFIG.groom;
 $("bride").textContent = $("bride2").textContent = CONFIG.bride;
 $("guest").textContent = $("gateGuest").textContent = guest;
 $("dateCover").textContent = $("dateMain").textContent = dateText;
-$("dateShort").textContent = dateShort;
+// Big date, for example ១៦.១០.២០២៦ (works even if config.js is an older copy)
+const bigDate = typeof dateShort === "string" ? dateShort : (() => { const [y, m, d] = CONFIG.date.split("-"); return `${kh(d)}.${kh(m)}.${kh(y)}`; })();
+$("dateBig").textContent = bigDate;
 $("venue").textContent = CONFIG.venue;
 $("address").textContent = CONFIG.address;
 $("venueBox").hidden = !(CONFIG.venue || CONFIG.address);
@@ -122,10 +124,49 @@ document.addEventListener("visibilitychange", () => {
   else if (resumeLater && !userPaused) { resumeLater = false; play(); }
 });
 
+// ===== Butterflies: they fly out from the button when the invitation opens =====
+const WING = '<path d="M50 38C42 4 8 0 6 22c-1 14 24 24 44 18z" style="fill:var(--c1)" stroke="#8a3a3a" stroke-width="1.2"/>' +
+  '<path d="M50 42C36 46 14 48 18 64c4 12 28 2 32-18z" style="fill:var(--c1)" stroke="#8a3a3a" stroke-width="1.2"/>' +
+  '<circle cx="24" cy="22" r="7" style="fill:var(--c2)" opacity=".75"/><circle cx="30" cy="58" r="5" style="fill:var(--c2)" opacity=".75"/>';
+const BUTTERFLY = '<svg viewBox="0 0 100 80" aria-hidden="true"><g class="wl">' + WING + '</g>' +
+  '<g transform="translate(100 0) scale(-1 1)"><g class="wr">' + WING + '</g></g>' +
+  '<ellipse cx="50" cy="42" rx="2.6" ry="15" fill="#6b2a2a"/>' +
+  '<path d="M49 28C46 18 42 14 38 12M51 28C54 18 58 14 62 12" stroke="#6b2a2a" stroke-width="1.2" fill="none"/></svg>';
+function releaseButterflies(from) {
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const layer = document.createElement("div");
+  layer.id = "butterflies"; layer.setAttribute("aria-hidden", "true"); document.body.append(layer);
+  const palette = [["#f2c84f", "#fff2b3"], ["#e8a0a8", "#fbe3e6"], ["#c76b78", "#f0c3c9"], ["#f6dca0", "#ffffff"], ["#d9a335", "#fff2b3"]];
+  const N = 11; let done = 0;
+  for (let i = 0; i < N; i++) {
+    const size = 34 + Math.random() * 30, [c1, c2] = palette[i % palette.length];
+    const el = document.createElement("div");
+    el.className = "bf"; el.style.cssText = `width:${size}px;height:${size * 0.8}px;--c1:${c1};--c2:${c2}`;
+    el.innerHTML = BUTTERFLY; layer.append(el);
+    // path: start at the button, wobble from side to side, leave through the top of the screen
+    const sx = from.x - size / 2 + (Math.random() - 0.5) * 60, sy = from.y - size / 2;
+    const ex = Math.random() * innerWidth, ey = -120 - Math.random() * 80;
+    const amp = 40 + Math.random() * 50, turns = 2 + Math.random() * 2, steps = 24, frames = [];
+    let px = sx, py = sy;
+    for (let k = 0; k <= steps; k++) {
+      const t = k / steps, e = t * t * (3 - 2 * t);
+      const x = sx + (ex - sx) * e + Math.sin(t * Math.PI * turns + i) * amp * Math.sin(t * Math.PI);
+      const y = sy + (ey - sy) * e;
+      const rot = k ? Math.atan2(y - py, x - px) * 180 / Math.PI + 90 : 0;
+      frames.push({ transform: `translate(${x}px,${y}px) rotate(${rot}deg)`, opacity: t < 0.06 ? t / 0.06 : t > 0.88 ? (1 - t) / 0.12 : 1, offset: t });
+      px = x; py = y;
+    }
+    const anim = el.animate(frames, { duration: 4200 + Math.random() * 2600, delay: 150 + i * 170, easing: "linear", fill: "both" });
+    anim.onfinish = () => { el.remove(); if (++done === N) layer.remove(); };
+  }
+}
+
 // Open-invitation screen: the tap starts the music.
 $("open").addEventListener("click", () => {
   userPaused = false;
   play();
+  const r = $("open").getBoundingClientRect();
+  releaseButterflies({ x: r.left + r.width / 2, y: r.top + r.height / 2 });
   const g = $("gate");
   g.classList.add("open");                    // the two doors slide apart
   document.body.classList.remove("locked");
