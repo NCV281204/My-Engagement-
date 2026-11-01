@@ -13,6 +13,7 @@
 <body class="locked">
 
 <div class="gate" id="gate" role="dialog" aria-modal="true" aria-label="Open invitation">
+  <div class="stage">
   <div class="door l"><div class="bg"></div></div>
   <div class="door r"><div class="bg"></div></div>
   <div class="gate-in">
@@ -22,6 +23,7 @@
     <div class="plaque" id="gateGuest"></div>
     <button class="gold" id="open" type="button">បើកសំបុត្រអញ្ជើញ</button>
     <small class="ink">Tap to open</small>
+  </div>
   </div>
 </div>
 
@@ -36,7 +38,7 @@
       <span class="ink nm l" id="groom"></span>
       <span class="ink nm r" id="bride"></span>
     </div>
-    <p class="ink bigdate" id="dateShort"></p>
+    <p class="ink bigdate" id="dateBig"></p>
     <p class="ink lead">សូមគោរពអញ្ជើញ</p>
     <div class="plaque" id="guest"></div>
     <p class="ink dateline" id="dateCover"></p>
@@ -90,7 +92,7 @@
 </main>
 
 <audio id="bgm" loop preload="auto">
-  <source src="music.mp3" type="audio/mpeg">
+  <source src="music/music.mp3" type="audio/mpeg">
   <source src="music.mp3" type="audio/mpeg">
 </audio>
 <button id="musicBtn" class="music" type="button" aria-label="Play or pause music" aria-pressed="false">
