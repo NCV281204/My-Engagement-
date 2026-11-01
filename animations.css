@@ -1,0 +1,53 @@
+/* animations.css (v4) - loaded after style.css, index.html only.
+   Cover = images/bg-pink.jpg: silk, flowers and gold marble sway gently, light sweeps across.
+   (The opening gate is now the video video/gate.mp4; its styles are in style.css and script.js plays it.) */
+
+:root{--ease-soft:cubic-bezier(.45,.05,.25,1)}
+
+/* ---------- Text: cleaner halo, lighter shadow ---------- */
+.ink{text-shadow:0 0 6px #fff,0 0 14px rgba(255,255,255,.85),1px 2px 3px rgba(90,40,50,.28)}
+@keyframes titleGlow{
+  0%,100%{text-shadow:0 0 6px #fff,0 0 14px rgba(255,255,255,.85),1px 2px 3px rgba(90,40,50,.28)}
+  50%{text-shadow:0 0 10px #fff,0 0 24px #fff,0 0 36px rgba(255,225,130,.9),1px 2px 3px rgba(90,40,50,.28)}
+}
+
+/* ===== 1. COVER (bg-pink.jpg) ===== */
+.cover{isolation:isolate}
+/* Each .breeze layer is the same picture, shown only in one corner (soft mask), so it can move on its own. */
+.breeze{position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background-image:var(--bgimg);background-size:cover;background-position:center;background-repeat:no-repeat;
+  -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;will-change:transform}
+.cover>.breeze{opacity:1}
+.breeze.tl{transform-origin:0 0;
+  -webkit-mask-image:radial-gradient(ellipse 46% 40% at 0 0,#000 55%,transparent 100%);
+          mask-image:radial-gradient(ellipse 46% 40% at 0 0,#000 55%,transparent 100%)}
+.breeze.tr{transform-origin:100% 0;
+  -webkit-mask-image:radial-gradient(ellipse 52% 30% at 100% 0,#000 55%,transparent 100%);
+          mask-image:radial-gradient(ellipse 52% 30% at 100% 0,#000 55%,transparent 100%)}
+.breeze.bl{transform-origin:0 100%;
+  -webkit-mask-image:radial-gradient(ellipse 40% 46% at 0 100%,#000 55%,transparent 100%);
+          mask-image:radial-gradient(ellipse 40% 46% at 0 100%,#000 55%,transparent 100%)}
+.breeze.br{transform-origin:100% 100%;
+  -webkit-mask-image:radial-gradient(ellipse 46% 26% at 100% 100%,#000 55%,transparent 100%);
+          mask-image:radial-gradient(ellipse 46% 26% at 100% 100%,#000 55%,transparent 100%)}
+
+/* A slow band of light passes over the whole cover, with a warm glow in the top corner */
+.cover::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:
+    linear-gradient(115deg,transparent 38%,rgba(255,255,255,.4) 50%,transparent 62%) -150% 0/60% 100% no-repeat,
+    radial-gradient(ellipse at 18% 8%,rgba(255,236,170,.4),transparent 55%);
+  background-position:-150% 0,0 0}
+
+@media (prefers-reduced-motion:no-preference){
+  .revealed .cover>.breeze.tl{animation:silkTL 9s var(--ease-soft) infinite alternate}
+  .revealed .cover>.breeze.br{animation:silkBR 10s var(--ease-soft) -3s infinite alternate}
+  .revealed .cover>.breeze.bl{animation:flowers 8s var(--ease-soft) -1s infinite alternate}
+  .revealed .cover>.breeze.tr{animation:marble 7s var(--ease-soft) infinite alternate}
+  .revealed .cover::after{animation:bgSheen 9s var(--ease-soft) 2s infinite,bgGlow 7s ease-in-out infinite alternate}
+}
+@keyframes silkTL{from{transform:rotate(-.7deg) scale(1)}to{transform:rotate(1.3deg) scale(1.035)}}
+@keyframes silkBR{from{transform:rotate(.7deg) scale(1)}to{transform:rotate(-1.3deg) scale(1.035)}}
+@keyframes flowers{from{transform:rotate(-.9deg) scale(1)}to{transform:rotate(1.5deg) scale(1.03)}}
+@keyframes marble{from{transform:translate(0,0);filter:brightness(1)}to{transform:translate(-4px,3px);filter:brightness(1.12)}}
+@keyframes bgSheen{0%{background-position:-150% 0,0 0}55%,100%{background-position:250% 0,0 0}}
+@keyframes bgGlow{from{opacity:.6}to{opacity:1}}
